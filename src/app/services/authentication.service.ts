@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { BooksService } from './books.service';
+import { Login } from '../interfaces/login';
 
 @Injectable({
   providedIn: 'root'
@@ -26,17 +27,16 @@ export class AuthenticationService {
    }
 
 
-  login(email:string):Observable<User[]>{
-    const params = `?email=${email}`;
+   
+  login(login:Login):Observable<User[]>{
+    const params = `?email=${login.email}`;
     return this._http.get<User[]>(this.baseURL+params);
   }
 
-  setUser(user:User,token?:string){
+  setUser(user:User){
     this.user.next(user);
     localStorage.setItem("email", `${user.email}`);
-    if(token){
-      localStorage.setItem("token", `${token}`);
-    }
+    localStorage.setItem("token", `${user.token}`);
   }
 
   logOut(){

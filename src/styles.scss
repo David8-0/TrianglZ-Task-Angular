@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+$bg-color:#Eff1FD;
+
 .custom-container{
     padding-inline: 30px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+body{
+    background-color:$bg-color;
+}
+input:focus{
+    box-shadow: none !important;
 }

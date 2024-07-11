@@ -1,1 +1,22 @@
-<p *ngIf="false">login works!</p>
+<div id="login-container" class="container-fluid vh-100  d-flex justify-content-center align-items-center">
+    <div class="row bg-white rounded-4 rounded w-75 overflow-hidden">
+        <div class="col-md-7">
+            <div id="form-data">
+                <h1>Please enter your email address and password to access your account </h1>
+                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="d-flex flex-column align-items-start">
+                    <input formControlName="email" type="text" placeholder="Email Address" class="form-control my-2">
+                    <input formControlName="password" type="password" placeholder="Password" class="form-control my-2">
+                    <a class="text-primary cursor-pointer my-2 text-decoration-none">Forgot Password?</a>
+                    <button class="btn btn-primary my-2">Sign in</button>
+                </form>
+                <div class="line my-2"></div>
+                <h3>Acore</h3>
+            </div>
+        </div>
+        <div class="col-md-5 p-0 ">
+            <div id="image-container">
+                <!-- <img src="assets/images/login.jpg" class="w-100" alt="library"> -->
+            </div>
+        </div>
+    </div>
+</div>
