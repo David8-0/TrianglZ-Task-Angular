@@ -30,7 +30,7 @@ export class BooksListComponent implements OnInit{
     this._bookService.getAll().subscribe({
       next:(response)=>{
         this.books = response;
-        this.numberOfPages = Math.ceil(this.books.length / this.pageSize);
+        this.paginate();
       }
     });
   }
@@ -61,7 +61,9 @@ export class BooksListComponent implements OnInit{
   deleteBook(){
     this._bookService.delete(this.selectedBookID).subscribe({
       next:(response)=>{
-        console.log(response);
+        this.books = this.books.filter(book=>book.id!=this.selectedBookID);
+        this.paginate();
+        
       },
       error:(error)=>{console.log(error);
       },
@@ -69,5 +71,9 @@ export class BooksListComponent implements OnInit{
     });
   }
 
-  
+  paginate(){
+    this.numberOfPages = Math.ceil(this.books.length / this.pageSize);
+    if(this.cureentPage > this.numberOfPages)
+      this.cureentPage=this.numberOfPages;
+  }
 }
