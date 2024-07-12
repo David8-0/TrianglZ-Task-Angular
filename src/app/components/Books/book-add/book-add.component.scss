@@ -1,0 +1,83 @@
+#books-add{
+    color: #5F6360;
+    margin-block: 20px;
+    input,select,textarea{
+        background-color: #EFF1FD;
+    }
+    textarea{
+        border: none;
+        resize: none;
+    }
+    h1{
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    #image-placeholder{
+        width: 128px;
+        height: 200px;
+        box-shadow: 3px 3px 5px #B3B3B3;
+        border-radius:10px ;
+        margin: auto;
+        position: relative;
+        i {
+            position: absolute;
+            color:#B3B3B3 ;
+            bottom: -13px;
+            left: 20px;
+            font-size: 14px;
+        }
+    }
+
+    #book-coverImage-input{
+        p{
+            color: #B4B4B4;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+            margin-block:15px ;
+        }
+        button{
+            display: block;
+            margin: auto;
+            padding:10px 20px;
+            border-radius: 12px;
+            color:#E8B2DE;
+            border: 1px solid #E8B2DE;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s;
+            &:hover{
+                background-color: #E8B2DE;
+                color: #fff;
+            }
+        }
+    }
+
+    #book-brief-input{
+        p{
+            font-size: 12px;
+        }
+    }
+
+    #control-buttons{
+        button{
+            margin-inline-end: 10px;
+            padding:10px 20px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            &:hover{
+                color: #000;
+            }
+        }
+        #cancel-btn{
+            background-color:#F0F0F0 ;
+        }
+        #save-btn{
+            background-color: #104CC8;
+            color: #fff;
+        }
+    }
+}

@@ -1,1 +1,146 @@
-<p>book-add works!</p>
+<div class="custom-container">
+    <div id="books-add">
+        <h1>Add Book</h1>
+        <div id="form-wrapper" class="bg-white rounded-4 p-4 shadow-sm">
+
+            <form [formGroup]="addBookForm" (ngSubmit)="addBook(addBookForm)">
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                            <div id="book-title-input" class="mb-4">
+                                <input formControlName="title" type="text" placeholder="Book title" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('title')?.errors && (addBookForm.get('title')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('title')?.getError('required')">
+                                        <span class="alert-text text-danger">Book title is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('title')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-author-input" class="mb-4">
+                                <input formControlName="author" type="text" placeholder="Book Author" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('author')?.errors && (addBookForm.get('author')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('author')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Author is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('author')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-category-input" class="mb-4">
+                                <select formControlName="category"  class="form-control my-1">
+                                    <option *ngFor="let item of booksCategoreis" [value]="item">{{item}}</option>
+                                </select>
+                                <div class="validation-error" *ngIf="addBookForm.get('category')?.errors && (addBookForm.get('category')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('category')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Category is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-price-input" class="mb-4">
+                                <input formControlName="price" type="number" placeholder="Book Price" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('price')?.errors && (addBookForm.get('price')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('price')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Price is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('price')?.getError('twoDecimalPlaces')">
+                                        <span class="alert-text text-danger">only 2 decimal places  are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-version-input" class="mb-4">
+                                <input formControlName="version" type="number" placeholder="Book Version" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('version')?.errors && (addBookForm.get('version')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('version')?.getError('required')">
+                                        <span class="alert-text text-danger">Book version is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('version')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <div id="book-olderVersions-input" class="mb-4">
+                                <select formControlName="category"  class="form-control my-1">
+                                    <option *ngFor="let item of booksVersions" [value]="item">{{item}}</option>
+                                </select>
+                            </div>
+
+                            <div id="book-edition-input" class="mb-4">
+                                <input formControlName="edition" type="text" placeholder="Book Edition" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('edition')?.errors && (addBookForm.get('edition')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('edition')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Edition is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('edition')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-ISBN-input" class="mb-4">
+                                <input formControlName="ISBN" type="text" placeholder="Book ISBN" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addBookForm.get('ISBN')?.errors && (addBookForm.get('ISBN')?.touched|| showErrors)">
+                                    <div  *ngIf="addBookForm.get('ISBN')?.getError('required')">
+                                        <span class="alert-text text-danger">Book ISBN is required.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('ISBN')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only numbers and dashes are allowed.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('ISBN')?.getError('minlength')">
+                                        <span class="alert-text text-danger">Minimum length is 10.</span>
+                                    </div>
+                                    <div  *ngIf="addBookForm.get('ISBN')?.getError('maxlength')">
+                                        <span class="alert-text text-danger">Maximum length is 13.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div id="book-releaseDate-input">
+                                <input formControlName="releaseDate" type="date"  class="form-control my-1">
+                            </div>
+                    </div>
+                    <div class="col-md-6 ">
+
+                        <div id="book-coverImage-input" class="mb-4">
+                            <div id="image-placeholder">
+
+                            <i class="fa-solid fa-bookmark"></i>
+                            </div>
+                            <p>Best dimensions for book cover image are 128*200</p>
+                            <button class="btn" type="button">Upload Book Cover *</button>
+                        </div>
+
+                        <div id="book-brief-input" class="mb-4">
+                            <textarea formControlName="brief" rows="5" class="form-control" placeholder="Book Brief"></textarea>
+                            <p class="text-end">{{ addBookForm.get('brief')?.value.length }}/800</p>
+                            <div class="validation-error" *ngIf="addBookForm.get('brief')?.errors && (addBookForm.get('brief')?.touched|| showErrors)">
+                                <div  *ngIf="addBookForm.get('brief')?.getError('required')">
+                                    <span class="alert-text text-danger">Book Brief is required.</span>
+                                </div>
+                                <div  *ngIf="addBookForm.get('brief')?.getError('pattern')">
+                                    <span class="alert-text text-danger">only characters are allowed.</span>
+                                </div>
+                                <div  *ngIf="addBookForm.get('brief')?.getError('maxlength')">
+                                    <span class="alert-text text-danger">Maximum allowed number of charactes is 800.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="control-buttons" class="text-end">
+                            <button id="cancel-btn" type="button" class="btn" (click)="cancel()">Cancel</button>
+                            <button id="save-btn" class="btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>

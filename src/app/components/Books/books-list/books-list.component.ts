@@ -21,6 +21,8 @@ export class BooksListComponent implements OnInit{
   pageSize:number=5;
   cureentPage:number=1;
   searchKey:string="";
+  showDeleteWarnings:boolean=false;
+  selectedBookID:string="";
 
   constructor(private _bookService:BooksService){}
 
@@ -36,4 +38,36 @@ export class BooksListComponent implements OnInit{
   jumpToPage(page: number) {
     this.cureentPage = page; 
   }
+
+  nextPage(){
+    if(this.cureentPage < this.numberOfPages)
+      this.cureentPage++;
+  }
+  previousPage(){
+    if(this.cureentPage > 1)
+      this.cureentPage--;
+  }
+
+  showDeleteMessage(bookID:string){
+    this.showDeleteWarnings=true;
+    this.selectedBookID=bookID;
+  }
+
+  hideDeleteMessage(){
+    this.showDeleteWarnings=false;
+    this.selectedBookID="";
+  }
+
+  deleteBook(){
+    this._bookService.delete(this.selectedBookID).subscribe({
+      next:(response)=>{
+        console.log(response);
+      },
+      error:(error)=>{console.log(error);
+      },
+      complete:()=>{this.hideDeleteMessage()}
+    });
+  }
+
+  
 }

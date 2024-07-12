@@ -7,27 +7,34 @@ import { Book } from '../interfaces/book';
   providedIn: 'root'
 })
 export class BooksService {
-  baseURL:string = `http://localhost:3000/books/`;
+  baseURL:string = `http://localhost:3000/`;
   constructor(private _http: HttpClient) { }
 
   getAll():Observable<Book[]>{
-    return this._http.get<Book[]>(this.baseURL);
+    return this._http.get<Book[]>(this.baseURL+"books");
   }
 
-  delete(bookID:number):Observable<Book>{
-    return this._http.delete<Book>(this.baseURL+bookID);
+  getAllCategories():Observable<{data:string[]}>{
+    return this._http.get<{data:string[]}>(this.baseURL+"categories");
+  }
+  getAllVersions():Observable<{data:number[]}>{
+    return this._http.get<{data:number[]}>(this.baseURL+"versions");
   }
 
-  getByID(bookID:number):Observable<Book>{
-    return this._http.get<Book>(this.baseURL+bookID);
+  delete(bookID:string):Observable<Book>{
+    return this._http.delete<Book>(this.baseURL+"books/"+bookID);
+  }
+
+  getByID(bookID:string):Observable<Book>{
+    return this._http.get<Book>(this.baseURL+"books/"+bookID);
   }
 
   add(book:Book):Observable<Book>{
-    return this._http.post<Book>(this.baseURL,book);
+    return this._http.post<Book>(this.baseURL+"books",book);
   }
 
-  update(book:Book,bookID:number):Observable<Book>{
-    return this._http.patch<Book>(this.baseURL+bookID,book);
+  update(book:Book,bookID:string):Observable<Book>{
+    return this._http.patch<Book>(this.baseURL+"books/"+bookID,book);
   }
   
 }

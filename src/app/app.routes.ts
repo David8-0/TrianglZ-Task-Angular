@@ -7,6 +7,7 @@ import { BookAddComponent } from './components/Books/book-add/book-add.component
 import { BookDetailsComponent } from './components/Books/book-details/book-details.component';
 
 export const routes: Routes = [
+    {path:'',redirectTo:'login',pathMatch:'full'},
     {path:'login',component:LoginComponent},
     {path:'books',component:BooksContainerComponent,children:[
         {path:'list',component:BooksListComponent},

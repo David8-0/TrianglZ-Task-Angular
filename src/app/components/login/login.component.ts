@@ -26,7 +26,6 @@ export class LoginComponent {
     if(form.valid){
       this._authService.login(form.value).subscribe({
         next:(res)=>{
-          console.log(res);
           if(res.length>0){
             this._authService.setUser(res[0]);
             this._router.navigateByUrl('/books/list');
@@ -34,7 +33,6 @@ export class LoginComponent {
             this.isInvalidCredentials=true;
           }
         },error:(err)=>{
-          console.log(err);
         }
       });
     }else{

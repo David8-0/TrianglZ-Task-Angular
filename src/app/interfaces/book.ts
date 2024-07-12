@@ -1,5 +1,5 @@
 export interface Book {
-    id:number;
+    id:string;
       title: string;
       category: string;
       author: string;
@@ -10,4 +10,6 @@ export interface Book {
       image: string;
       releaseDate: string;
       brief: string;
+      pages: number;
+      toRead: number;
 }
