@@ -1,0 +1,54 @@
+<div class="custom-container">
+    <div id="books-list">
+        <div class="d-flex justify-content-between align-items-end">
+            <div class="w-25">
+                <h1>Books</h1>
+                <div id="search-input" class="">
+                    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchKey">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <a id="add-btn" routerLink="/books/add" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Add Book
+            </a>
+        </div>
+
+        <table class="table table-responsive-md table-hover my-3">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Book Category</th>
+                    <th>Book Author</th>
+                    <th>Book ISBN</th>
+                    <th>Book Version</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books |search:searchKey  | pagination:pageSize:cureentPage">
+                    <td class="ps-3">{{book.title}}</td>
+                    <td>{{book.category}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.ISBN}}</td>
+                    <td>{{book.version}}</td>
+                    <td class="">
+                        <div class="action-btns d-flex justify-content-between px-3">
+                            <i class="fa-solid fa-eye text-primary cursor-pointer"></i>
+                            <i class="fa-solid fa-pen text-success cursor-pointer"></i>
+                            <i class="fa-solid fa-trash cursor-pointer"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination d-flex   justify-content-center align-items-center">
+            <i class="fa-solid fa-chevron-left me-3"></i>
+            <div class="page-item" [class.active-page]="cureentPage==i" *ngFor="let i of numberOfPages | times"  (click)="jumpToPage(i)">
+                {{i}}
+            </div>
+            <i class="fa-solid fa-chevron-right ms-2"></i>
+        </div>
+    </div>
+</div>

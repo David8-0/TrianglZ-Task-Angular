@@ -1,0 +1,56 @@
+
+#books-list{
+    color: #5F6360;
+    margin-block: 20px;
+
+    h1{
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    #search-input{
+        position: relative;
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    }
+
+    #add-btn{
+        padding-inline: 20px;
+        font-weight: 600;
+    }
+
+    table th,td{
+        color: #5F6360;
+        padding-block: 20px;
+    }
+
+    .pagination{
+        width: fit-content;
+        margin-left:auto;
+
+        .page-item{
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-right:10px ;
+            transition: 0.3s all;
+        }
+        
+        .active-page{
+            background-color: #0F4CCA;
+            color: #fff;
+        }
+    }
+    
+    
+}

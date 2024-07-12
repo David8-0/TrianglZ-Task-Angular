@@ -3,9 +3,9 @@ export interface Book {
       title: string;
       category: string;
       author: string;
-      ISBN: 9780747532699,
-      price: 120,
-      version: 1,
+      ISBN: number,
+      price: number,
+      version: number,
       edition: string;
       image: string;
       releaseDate: string;

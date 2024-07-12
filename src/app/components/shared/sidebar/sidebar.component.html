@@ -1,1 +1,20 @@
-<p>sidebar works!</p>
+<aside id="sidebar" [class.expand]="isExpanded">
+    <div id="sidebar-head" >
+        <h3 *ngIf="isExpanded">Acore</h3>
+        <div id="sidebar-icon" class="d-flex justify-content-center align-items-center"  [class.expand-icons]="!isExpanded"> 
+            <i *ngIf="isExpanded" class="fa-solid fa-chevron-left cursor-pointer" (click)="toggleSideBar()"></i>
+            <i *ngIf="!isExpanded" class="fa-solid fa-bars cursor-pointer" (click)="toggleSideBar()"></i>
+        </div>
+
+    </div>
+    <div id="sidebar-body">
+        
+            <a routerLink="/books/list" class="text-decoration-none text-black">
+                <div class="sidebar-item ">
+                <i class="fa-solid fa-book" [class.me-3]="isExpanded"></i>
+                <span *ngIf="isExpanded">Books</span>
+            </div>
+            </a>
+        
+    </div>
+</aside>

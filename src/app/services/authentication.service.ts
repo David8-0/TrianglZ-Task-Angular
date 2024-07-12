@@ -15,9 +15,12 @@ export class AuthenticationService {
   constructor(private _http: HttpClient,private _booksService:BooksService) {
     if(localStorage.getItem('token') && localStorage.getItem('email')){
       const userEmail = `${localStorage.getItem('email')}`;
-      this.login(userEmail).subscribe({
+      this.getUserByEmail(userEmail).subscribe({
         next:(response)=>{
-          this.user.next(response[0]);
+          if(response.length > 0)
+            this.user.next(response[0]);
+          else
+            this.logOut();
         },
         error:(err)=>{
           this.logOut();
@@ -26,6 +29,10 @@ export class AuthenticationService {
     }
    }
 
+   getUserByEmail(email:string):Observable<User[]>{
+    const params = `?email=${email}`;
+    return this._http.get<User[]>(this.baseURL+params);
+  }
 
    
   login(login:Login):Observable<User[]>{

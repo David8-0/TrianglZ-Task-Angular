@@ -4,18 +4,47 @@
             <div id="form-data">
                 <h1>Please enter your email address and password to access your account </h1>
                 <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="d-flex flex-column align-items-start">
+
                     <input formControlName="email" type="text" placeholder="Email Address" class="form-control my-2">
-                    <input formControlName="password" type="password" placeholder="Password" class="form-control my-2">
+                    <div id="email-validation" class="validation-error" *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched|| showErrors)">
+                        <div id="email-required" *ngIf="loginForm.get('email')?.getError('required')">
+                            <i class="fa-solid fa-circle-exclamation text-danger me-1"></i>
+                            <span class="alert-text text-danger">This field is required.</span>
+                        </div>
+                        <div id="email-pattern" *ngIf="loginForm.get('email')?.getError('email')">
+                            <i class="fa-solid fa-circle-exclamation text-danger me-1"></i>
+                            <span class="alert-text text-danger">Please enter a valid email format</span>
+                        </div>
+                    </div>
+
+                    <div id="password-wrapper" class="position-relative w-100">
+                        <input formControlName="password" [type]="isShowPassword?'text':'password'" placeholder="Password" class="form-control my-2">
+                        <span class="show-password" (click)="toggleShowPassword()" *ngIf="!isShowPassword">show</span>
+                        <span class="show-password" (click)="toggleShowPassword()" *ngIf="isShowPassword">hide</span>
+                    </div>
+                    <div id="password-validation" class="validation-error" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched|| showErrors)">
+                        <div id="email-required" *ngIf="loginForm.get('password')?.getError('required')">
+                            <i class="fa-solid fa-circle-exclamation text-danger me-1"></i>
+                            <span class="alert-text text-danger">This field is required.</span>
+                        </div>
+                    </div>
+
+                    <div id="general-validation" class="text-danger" *ngIf="isInvalidCredentials">
+                        <i class="fa-solid fa-circle-exclamation text-danger me-1"></i>
+                        Your login credentials are invalid. Please try again.
+                    </div>
+
                     <a class="text-primary cursor-pointer my-2 text-decoration-none">Forgot Password?</a>
-                    <button class="btn btn-primary my-2">Sign in</button>
+
+                    <button class="btn btn-primary my-2" id="sign-in-button">Sign in</button>
                 </form>
                 <div class="line my-2"></div>
                 <h3>Acore</h3>
             </div>
         </div>
         <div class="col-md-5 p-0 ">
-            <div id="image-container">
-                <!-- <img src="assets/images/login.jpg" class="w-100" alt="library"> -->
+            <div id="image-container" class="w-100">
+                <div id="image-layer"></div>
             </div>
         </div>
     </div>

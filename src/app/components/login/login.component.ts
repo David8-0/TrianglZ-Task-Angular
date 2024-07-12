@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private _authService:AuthenticationService){}
+  isShowPassword:boolean = false;
+  showErrors:boolean = false;
+  isInvalidCredentials:boolean = false;
+  constructor(private _authService:AuthenticationService,private _router: Router){}
 
   loginForm:FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required])
   });
+
   login(form:FormGroup){
     if(form.valid){
       this._authService.login(form.value).subscribe({
@@ -24,12 +29,21 @@ export class LoginComponent {
           console.log(res);
           if(res.length>0){
             this._authService.setUser(res[0]);
+            this._router.navigateByUrl('/books/list');
+          }else{
+            this.isInvalidCredentials=true;
           }
         },error:(err)=>{
           console.log(err);
-          
         }
       });
+    }else{
+      this.showErrors=true;
     }
   }
+
+  toggleShowPassword(){
+    this.isShowPassword=!this.isShowPassword;
+  }
+
 }
