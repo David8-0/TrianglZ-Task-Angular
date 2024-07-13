@@ -1,0 +1,176 @@
+
+    <div id="books-add-edit" class="container-fluid">
+        
+        <div id="form-wrapper" class="bg-white rounded-4 p-2 p-md-4 shadow-sm">
+
+            <form [formGroup]="addEditBookForm" (ngSubmit)="submitBook(addEditBookForm)">
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                            <div id="book-title-input" class="mb-4 position-relative">
+                                <input formControlName="title" type="text"  class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('title')?.value" class="place-holder">Book title <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('title')?.errors && (addEditBookForm.get('title')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('title')?.getError('required')">
+                                        <span class="alert-text text-danger">Book title is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('title')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-author-input" class="mb-4 position-relative">
+                                <input formControlName="author" type="text" placeholder="" class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('author')?.value" class="place-holder">Book Author <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('author')?.errors && (addEditBookForm.get('author')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('author')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Author is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('author')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-category-input" class="mb-4 position-relative">
+                                <select formControlName="category"  class="form-control my-1">
+                                    <option *ngFor="let item of booksCategoreis" [value]="item">{{item}}</option>
+                                </select>
+                                <div *ngIf="!addEditBookForm.get('category')?.value" class="place-holder">Categories <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('category')?.errors && (addEditBookForm.get('category')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('category')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Category is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-price-input" class="mb-4 position-relative">
+                                <input formControlName="price" type="number" class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('price')?.value" class="place-holder">Book Price <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('price')?.errors && (addEditBookForm.get('price')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('price')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Price is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('price')?.getError('twoDecimalPlaces')">
+                                        <span class="alert-text text-danger">only 2 decimal places  are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-version-input" class="mb-4 position-relative">
+                                <input formControlName="version" type="text"  class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('version')?.value" class="place-holder">Book Version <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('version')?.errors && (addEditBookForm.get('version')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('version')?.getError('required')">
+                                        <span class="alert-text text-danger">Book version is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('version')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <div id="book-olderVersions-input" class="mb-4 position-relative">
+                                <select formControlName="olderVersion"  class="form-control my-1">
+                                    <option *ngFor="let item of booksVersions" [value]="item">{{item}}</option>
+                                </select>
+                                <div *ngIf="!addEditBookForm.get('olderVersion')?.value" class="place-holder">Book older Version </div>
+                            </div>
+
+                            <div id="book-edition-input" class="mb-4">
+                                <input formControlName="edition" type="text" placeholder="Book Edition" class="form-control my-1">
+                                <div class="validation-error" *ngIf="addEditBookForm.get('edition')?.errors && (addEditBookForm.get('edition')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('edition')?.getError('required')">
+                                        <span class="alert-text text-danger">Book Edition is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('edition')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only characters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-ISBN-input" class="mb-4 position-relative">
+                                <input formControlName="ISBN" type="text" class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('ISBN')?.value" class="place-holder">Book ISBN <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('ISBN')?.errors && (addEditBookForm.get('ISBN')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('ISBN')?.getError('required')">
+                                        <span class="alert-text text-danger">Book ISBN is required.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('ISBN')?.getError('pattern')">
+                                        <span class="alert-text text-danger">only numbers and dashes are allowed.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('ISBN')?.getError('minlength')">
+                                        <span class="alert-text text-danger">Minimum length is 10.</span>
+                                    </div>
+                                    <div  *ngIf="addEditBookForm.get('ISBN')?.getError('maxlength')">
+                                        <span class="alert-text text-danger">Maximum length is 13.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div id="book-releaseDate-input" class="mb-4">
+                                <input formControlName="releaseDate" type="date"  class="form-control my-1">
+                            </div>
+
+                            <div id="book-pages-input" class="mb-4 position-relative">
+                                <input formControlName="pages" type="number" class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('pages')?.value" class="place-holder">Book number of pages <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('pages')?.errors && (addEditBookForm.get('pages')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('pages')?.getError('required')">
+                                        <span class="alert-text text-danger">Book number of pages is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book-toread-input" class="mb-4 position-relative">
+                                <input formControlName="toRead" type="number" class="form-control my-1">
+                                <div *ngIf="!addEditBookForm.get('toRead')?.value" class="place-holder">Book average reading time <span class="required">*</span></div>
+                                <div class="validation-error" *ngIf="addEditBookForm.get('toRead')?.errors && (addEditBookForm.get('toRead')?.touched|| showErrors)">
+                                    <div  *ngIf="addEditBookForm.get('toRead')?.getError('required')">
+                                        <span class="alert-text text-danger">Book average reading time is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-6 ">
+
+                        <div id="book-coverImage-input" class="mb-4">
+                            <div id="image-placeholder">
+
+                            <i class="fa-solid fa-bookmark"></i>
+                            </div>
+                            <p>Best dimensions for book cover image are 128*200</p>
+                            <button class="btn" type="button">Upload Book Cover *</button>
+                            <input  type="file" (change)="onImageUpload($event)">
+                        </div>
+
+                        <div id="book-brief-input" class="mb-4 position-relative">
+                            <textarea formControlName="brief" rows="5" class="form-control" ></textarea>
+                            <div *ngIf="!addEditBookForm.get('brief')?.value" class="place-holder">Book Brief <span class="required">*</span></div>
+                            <p class="text-end">{{ addEditBookForm.get('brief')?.value?.length }}/800</p>
+                            <div class="validation-error" *ngIf="addEditBookForm.get('brief')?.errors && (addEditBookForm.get('brief')?.touched|| showErrors)">
+                                <div  *ngIf="addEditBookForm.get('brief')?.getError('required')">
+                                    <span class="alert-text text-danger">Book Brief is required.</span>
+                                </div>
+                                <div  *ngIf="addEditBookForm.get('brief')?.getError('pattern')">
+                                    <span class="alert-text text-danger">only characters are allowed.</span>
+                                </div>
+                                <div  *ngIf="addEditBookForm.get('brief')?.getError('maxlength')">
+                                    <span class="alert-text text-danger">Maximum allowed number of charactes is 800.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="control-buttons" class="text-end">
+                            <button id="cancel-btn" type="button" class="btn" (click)="cancel()">Cancel</button>
+                            <button id="save-btn" class="btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+

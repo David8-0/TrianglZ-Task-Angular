@@ -1,16 +1,20 @@
 
 #books-list{
     color: #5F6360;
-    margin-block: 20px;
+    margin-block: 40px;
 
     h1{
         font-size: 30px;
         font-weight: 700;
     }
 
+    .search-header{
+        width: 30%;
+    }
+
     #search-input{
         position: relative;
-
+        
         i {
             position: absolute;
             top: 50%;
@@ -20,15 +24,33 @@
     }
 
     #add-btn{
-        padding-inline: 20px;
+        padding:10px 20px;
         font-weight: 600;
-        border-radius: 12px;
+        border-radius: 15px;
+        transition: all 0.3s;
+        background-color:#0D4DC8;
+        color: #fff;
+    }
+    #table-container{
+        overflow-x: auto;
+        width: 100%;
+    }
+    table{
+        word-break: normal;
+        th,td{
+            color: #5F6360;
+            padding-block: 20px;
+            text-align: start;
+        }
+        td{
+            word-break: normal;
+        }
+        td:nth-child(4){
+            word-break: break-all;
+        }
     }
 
-    table th,td{
-        color: #5F6360;
-        padding-block: 20px;
-    }
+     
 
     .pagination{
         width: fit-content;
@@ -53,6 +75,29 @@
         }
     }
     
+    #search-results{
+        border: 1px solid #86b7fe;
+        transition: all 0.3s;
+        max-height: 400px;
+        overflow-y:auto ;
+        overflow-x: hidden;
+        position: absolute;
+        width: 100%;
+        word-wrap: break-word;
+        .search-item{
+            a{
+                color: #5F6360;
+            }
+            padding: 5px 5px;
+            &:hover{
+                background-color: #ECECEC;
+            }
+            .search-line{
+                background-color: #5f63603a;
+                height: 1px;
+            }
+        }
+    }
     
 }
 
@@ -70,26 +115,45 @@
         margin-bottom: 25px;
     }
 
-    #control-buttons{
-        button{
-            margin-inline-end: 10px;
-            padding:10px 20px;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
-            &:hover{
-                color: #000;
-            }
-        }
-        #cancel-btn{
-            background-color:#F0F0F0 ;
-        }
-        #delete-btn{
-            background-color: #AF001D;
-            color: #fff;
-        }
-    }
+    
 }
 
+@media (max-width: 991.98px) { 
+    #books-list{
 
+        .search-header{
+            width: 50%;
+        }
+       
+    }
+}
+@media (max-width: 767.98px) {
+    #books-list{
+        table{
+            font-size: 12px;
+        }
+    }
+ }
+
+@media (max-width: 575.98px) {
+    #books-list{
+
+        .search-header{
+            width: 100%;
+        }
+        #add-btn{
+            width: 100%;
+        }
+        .pagination{
+            margin-left: 0;
+            .page-item{
+                margin-right:3px ;
+            }
+        }
+        table{
+            td{
+                padding: 0;
+            }
+        }
+    }
+ }

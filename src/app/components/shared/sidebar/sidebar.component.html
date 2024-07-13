@@ -1,6 +1,6 @@
 <aside id="sidebar" [class.expand]="isExpanded">
     <div id="sidebar-head" >
-        <h3 *ngIf="isExpanded">Acore</h3>
+        <h3 *ngIf="isExpanded" class="m-auto ">Acore</h3>
         <div id="sidebar-icon" class="d-flex justify-content-center align-items-center"  [class.expand-icons]="!isExpanded"> 
             <i *ngIf="isExpanded" class="fa-solid fa-chevron-left cursor-pointer" (click)="toggleSideBar()"></i>
             <i *ngIf="!isExpanded" class="fa-solid fa-bars cursor-pointer" (click)="toggleSideBar()"></i>
@@ -18,3 +18,5 @@
         
     </div>
 </aside>
+
+

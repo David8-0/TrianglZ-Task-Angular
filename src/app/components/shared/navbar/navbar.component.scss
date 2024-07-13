@@ -4,4 +4,14 @@
         cursor: pointer;
     }
 }
+.navbar-brand{
+    color: #0D4DC8;
+}
 
+@media (max-width: 575.98px) { 
+    nav{
+        .navbar-brand{
+            font-size: 14px;
+        }
+    }
+}

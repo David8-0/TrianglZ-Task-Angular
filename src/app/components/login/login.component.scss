@@ -1,16 +1,28 @@
 
-h1{
-    font-size: 25px;
-}
+
 
 #form-data{
     padding: 80px 40px;
+
+    h1{
+        font-size: 25px;
+    }
+    #sign-in-button{
+        padding:10px 35px ;
+        font-weight: 600;
+    }
+    .line{
+        height: 1px;
+        background-color: #EFF1FD;
+    }
+
+    input{
+        background-color: #EFF1FD;
+    }
+    
 }
 
-.line{
-    height: 1px;
-    background-color: #EFF1FD;
-}
+
 
 #image-container{
     position: relative;
@@ -27,14 +39,8 @@ h1{
     }
 }
 
-input{
-    background-color: #EFF1FD;
-}
 
-#sign-in-button{
-    padding:10px 35px ;
-    font-weight: 600;
-}
+
 
 .show-password{
     font-size: 12px;
@@ -45,3 +51,18 @@ input{
     cursor: pointer;
     opacity: 0.7;
 }
+
+@media (max-width: 576px) { 
+    #form-data{
+        padding: 15px 5px;
+        h1{
+            font-size: 20px;
+        }
+        #sign-in-button{
+            padding:10px 35px ;
+            font-weight: 600;
+            width: 100%;
+        }
+    }
+    
+ }

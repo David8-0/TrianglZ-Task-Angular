@@ -26,7 +26,7 @@ export class LoginComponent {
     if(form.valid){
       this._authService.login(form.value).subscribe({
         next:(res)=>{
-          if(res.length>0){
+          if(res.length>0 && res[0].password == form.value.password){
             this._authService.setUser(res[0]);
             this._router.navigateByUrl('/books/list');
           }else{

@@ -20,7 +20,7 @@ aside{
 
 .expand{
     width: 250px ;
-    padding: 20px 25px;
+    padding: 20px 0px;
 }
 
 .expand-icons{
@@ -32,3 +32,20 @@ aside{
 #sidebar-icon i{
     padding: 10px;
 }
+
+@media (max-width: 767.98px) {
+    aside{
+        
+        width: 30px;
+        #sidebar-head{
+            margin-bottom: 20px;
+            
+        }
+        & .sidebar-item{
+            padding: 0px;
+            text-align: center;
+        }
+       
+    }
+    
+ }

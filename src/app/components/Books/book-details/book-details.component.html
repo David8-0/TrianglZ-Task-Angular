@@ -1,1 +1,69 @@
-<p>book-details works!</p>
+<div class="custom-container">
+    <div id="books-details" >
+        <h1 class="text-center text-md-start">Book Details</h1>
+        <div id="details-wrapper" class="bg-white rounded-4 p-3 p-md-5  shadow-sm">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="image-placeholder" class="m-auto m-sm-0">
+
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="d-flex justify-content-between mt-4 mt-md-0 flex-column flex-sm-row">
+                        <div id="main-details" class="" >
+                            <h3 class="text-center text-sm-start">{{book.title}}</h3> 
+                            <div id="book-info" class="d-flex justify-content-center justify-content-sm-between">
+                                <div class="info-item me-3 me-sm-0">
+                                    <span class="info-number">{{book.pages}}</span>
+                                    <span class="info-text">Pages</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-number">{{book.toRead}}h</span>
+                                    <span class="info-text">To read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="control-buttons">
+                            <div id="control-buttons" class="text-end">
+                                <button id="red-btn" class="btn" (click)="showDeleteMessage(book.id)" >Delete</button>
+                                <button id="blue-btn" [routerLink]="['/books/edit',book.id]" class="btn" >Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="more-details" class="text-center text-sm-start">
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <p class="info-text">By {{book.author}} | {{book.releaseDate}}</p>
+                        <p class="info-number">$ {{book.price}}</p>
+                        <p class="info-text">ISBN: {{book.ISBN}}</p>
+                        <p class="info-text">version: {{book.version}}</p>
+                        <div id="book-category" class="info-text m-auto m-sm-0">
+                            {{book.category}}
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-7 mt-3 mt-sm-0">
+                        <h4>Brief</h4>
+                        <p class="info-text">{{book.brief}}</p>
+                    </div>
+    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showDeleteWarnings" id="delete-warning" class="rounded-3  bg-white p-4">
+    <h3>Delete Book</h3>
+    <p>Are you sure you want to delete this Book?</p>
+    <div id="control-buttons" class="text-end">
+        <button id="grey-btn" type="button" class="btn" (click)="hideDeleteMessage()">Cancel</button>
+        <button id="red-btn" class="btn" (click)="deleteBook()">Delete</button>
+    </div>
+</div>
