@@ -1,27 +1,43 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksService } from 'src/app/services/books.service';
 import { CustomValidationService } from 'src/app/services/custom-validation.service';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-edit',
   standalone: true,
   imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './add-edit.component.html',
-  styleUrls: ['./add-edit.component.scss']
+  styleUrls: ['./add-edit.component.scss'],
+  providers:[]
 })
 export class AddEditComponent implements OnChanges{
   @Input() editBook:Book|null = null;
+
   showErrors:boolean = false;
   booksCategoreis:string[] = [];
   booksVersions:number[] = [];
+
+ 
+  imageURL:string="";
+  pdfUrl:string="";
+  uploadingImage:boolean = false;
+  uploadingPDF:boolean = false;
+
+
+
   constructor(
     private _booksService:BooksService,
     private _customValidation:CustomValidationService,
-    private _router:Router
+    private _router:Router,
+    private storage: Storage,
+    private cdr: ChangeDetectorRef
   ){}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -37,6 +53,10 @@ export class AddEditComponent implements OnChanges{
         this.addEditBookForm.get('brief')?.setValue(this.editBook.brief);
         this.addEditBookForm.get('pages')?.setValue(this.editBook.pages);
         this.addEditBookForm.get('toRead')?.setValue(this.editBook.toRead);
+        this.addEditBookForm.get('image')?.setValue(this.editBook.image);
+        this.imageURL = this.editBook.image??"";
+        console.log(this.addEditBookForm);
+        
       }
   }
 
@@ -64,14 +84,15 @@ export class AddEditComponent implements OnChanges{
     price: new FormControl('',[Validators.required,this._customValidation.twoDecimalPlacesValidator()]),
     version: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s.']*$/)]), //
     edition: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s.']*$/)]),
-    //image: new FormControl('',[Validators.required]),
+    image: new FormControl('',[Validators.required]),
+    pdf: new FormControl('',[Validators.required]),
     releaseDate: new FormControl(''),
     brief: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s.']*$/),Validators.maxLength(800)]),
   });
 
 
   submitBook(bookForm:FormGroup){
-    if(bookForm.valid && !this.editBook){
+    if(bookForm.valid && !this.editBook ){
       this._booksService.add(bookForm.value).subscribe({
         next:(response)=>{
           this._router.navigateByUrl('/books/list');
@@ -90,6 +111,8 @@ export class AddEditComponent implements OnChanges{
     }
     else{
       this.showErrors=true;
+      console.log(bookForm);
+      
     }
   }
 
@@ -97,13 +120,39 @@ export class AddEditComponent implements OnChanges{
     this._router.navigateByUrl('/books/list');
   }
 
-  onImageUpload(event:any){
-    const file = event.target.files[0];
-    if(file){
-      console.log(file);
-      
-    }
-  }
 
+  uploadFile(event: any,type:string) {
+    if(type == 'image'){
+      this.uploadingImage= true;
+    }else if(type == 'pdf'){
+      this.uploadingPDF= true;
+    }
+    
+    const file = event.target.files[0];
+    const filePath = `images/${new Date().getTime()}_${file.name}`;
+    const storageRef = ref(this.storage, filePath);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on('state_changed', snapshot => {
+      
+    }, error => {
+      console.error(error);
+    }, () => {
+      getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+        if(type == 'image'){
+          this.uploadingImage= false;
+          this.imageURL = downloadURL;
+          this.addEditBookForm.get('image')?.setValue(this.imageURL);
+        }else if(type == 'pdf'){
+          this.uploadingPDF= false;
+          this.pdfUrl = downloadURL;
+          this.addEditBookForm.get('pdf')?.setValue(this.pdfUrl);
+        }
+        
+        this.cdr.detectChanges(); 
+
+      });
+    });
+  }
 
 }

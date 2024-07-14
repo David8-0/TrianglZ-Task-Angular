@@ -4,18 +4,21 @@
         <div id="details-wrapper" class="bg-white rounded-4 p-3 p-md-5  shadow-sm">
 
             <div class="row">
-                <div class="col-sm-3">
-                    <div id="image-placeholder" class="m-auto m-sm-0">
-
-                        <i class="fa-solid fa-bookmark"></i>
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="d-flex justify-content-between mt-4 mt-md-0 flex-column flex-sm-row">
-                        <div id="main-details" class="" >
+                <div class="col-sm-6">
+                    <div class=" d-flex">
+                        <div id="image-container">
+                            <div id="image-placeholder" class="m-auto m-sm-0">
+    
+                                <i class="fa-solid fa-bookmark"></i>
+                                <div *ngIf="book.image"  id="image-wrapper">
+                                    <img [src]="book.image" class="h-100 w-100" alt="book image">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="main-details" class="ms-sm-5 ms-0" >
                             <h3 class="text-center text-sm-start">{{book.title}}</h3> 
-                            <div id="book-info" class="d-flex justify-content-center justify-content-sm-between">
-                                <div class="info-item me-3 me-sm-0">
+                            <div id="book-info" class="d-flex justify-content-center ">
+                                <div class="info-item me-3">
                                     <span class="info-number">{{book.pages}}</span>
                                     <span class="info-text">Pages</span>
                                 </div>
@@ -23,15 +26,26 @@
                                     <span class="info-number">{{book.toRead}}h</span>
                                     <span class="info-text">To read</span>
                                 </div>
+                                
+                                
+                            </div>
+                            <div class="text-center">
+                                <a [href]="book.pdf" class="btn" id="download">Download</a>
                             </div>
                         </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-6">
+                   
+                        
                         <div id="control-buttons">
                             <div id="control-buttons" class="text-end">
                                 <button id="red-btn" class="btn" (click)="showDeleteMessage(book.id)" >Delete</button>
                                 <button id="blue-btn" [routerLink]="['/books/edit',book.id]" class="btn" >Edit</button>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
             <div id="more-details" class="text-center text-sm-start">

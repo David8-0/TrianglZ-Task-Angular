@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class SidebarComponent implements OnInit{
   @Input() isExpanded: boolean = false;
-   specificWidth:number = 992;
+   specificWidth:number = 767;
 
   ngOnInit(): void {
     this.checkWindowWidth(window.innerWidth);

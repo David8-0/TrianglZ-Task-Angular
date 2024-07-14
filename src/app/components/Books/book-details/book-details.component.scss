@@ -20,6 +20,19 @@
             left: 20px;
             font-size: 14px;
         }
+        #image-wrapper{
+            img{
+                object-fit:contain;
+            }
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: 3px;
+            bottom: 3px;
+            position: absolute;
+            border-radius:10px ;
+            overflow: hidden;
+        }
         
     }
     #main-details{
@@ -27,7 +40,15 @@
         h3{
             color:#464646;
             font-weight: 700;
+            font-size: 22px;
+            text-align: center;
         }
+        #download{
+            
+            margin: auto;
+            background-color: #F0F0F0 ;
+        }
+
         #book-info{
             .info-item{
                 display: flex;
@@ -86,10 +107,18 @@
 @media (max-width: 575.98px) {
     #books-details{
         #control-buttons{
+            margin-top: 20px;
             button{
                 width: 100%;
                 margin-block: 5px;
             }
+        }
+    }
+    #delete-warning{
+        width: 75%;
+        button{
+            width: 100% ;
+            margin-block: 10px;
         }
     }
  }

@@ -136,13 +136,35 @@
                     <div class="col-md-6 ">
 
                         <div id="book-coverImage-input" class="mb-4">
-                            <div id="image-placeholder">
+                            <div id="image-container">
+                                <div id="image-placeholder">
 
-                            <i class="fa-solid fa-bookmark"></i>
+                                    <i class="fa-solid fa-bookmark"></i>
+                                    <div *ngIf="imageURL.length>0" id="image-wrapper">
+                                        <img [src]="imageURL" class="h-100 w-100" alt="book image">
+                                    </div>
+                                </div>
+                                <p>Best dimensions for book cover image are 128*200</p>
                             </div>
-                            <p>Best dimensions for book cover image are 128*200</p>
-                            <button class="btn" type="button">Upload Book Cover *</button>
-                            <input  type="file" (change)="onImageUpload($event)">
+                            
+                            <div id="image-upload" class="my-2">
+                                <label for="upload-image" class="btn" >
+                                    <span *ngIf="!uploadingImage">Upload Book Cover *</span>
+                                    <span *ngIf="uploadingImage">Uploading <i class="fa-solid fa-spin fa-circle-notch"></i></span>
+                                </label>
+                                
+                                <p *ngIf="showErrors && imageURL.length==0" class="alert-text text-danger fw-normal">Book image cover is required.</p>
+                                <input id="upload-image" class="d-none"  type="file" (change)="uploadFile($event,'image')">
+                            </div>
+                            <div id="pdf-upload" class="my-2">
+                                <label for="upload-pdf" class="btn" >
+                                    <span *ngIf="!uploadingPDF">Upload Book PDF *</span>
+                                    <span *ngIf="uploadingPDF">Uploading <i class="fa-solid fa-spin fa-circle-notch"></i></span>
+                                </label>
+                                <p *ngIf="showErrors && pdfUrl.length==0" class="alert-text text-danger fw-normal">Book PDF is required.</p>
+                                <input id="upload-pdf" class="d-none" accept=".pdf"  type="file" (change)="uploadFile($event,'pdf')">
+                            </div>
+                           
                         </div>
 
                         <div id="book-brief-input" class="mb-4 position-relative">

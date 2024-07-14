@@ -13,4 +13,5 @@ export interface Book {
       pages: number;
       toRead: number;
       olderVersion?: number;
+      pdf:string;
 }

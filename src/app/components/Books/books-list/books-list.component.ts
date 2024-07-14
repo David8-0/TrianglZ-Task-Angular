@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -7,6 +8,7 @@ import { PaginationPipe } from 'src/app/pipes/pagination.pipe';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-books-list',
@@ -24,7 +26,10 @@ export class BooksListComponent implements OnInit{
   showDeleteWarnings:boolean=false;
   selectedBookID:string="";
 
-  constructor(private _bookService:BooksService){}
+  constructor(
+    private _bookService:BooksService,
+    
+  ){}
 
   ngOnInit(): void {
     this._bookService.getAll().subscribe({
