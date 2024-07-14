@@ -1,27 +1,107 @@
-# TrinaglZTaskAngular
+# Acore Admin Portal 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+This project is an admin portal and user-friendly platform designed to manage books, implemented using Angular framework and json-server for a local API. It also integrates Firebase for uploading images and PDFs. The portal is fully responsive, ensuring seamless user experience across different devices.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Login/Logout**:
+   - Admin login with email and password.
+   - Validation messages for required fields and invalid email format.
+   - Logout functionality with redirection to the login page.
+  
+2. **search feature**:
+     - Search books by title or author name.
 
-## Code scaffolding
+3. **Book Management**:
+   - List all books with details such as title, category, author, ISBN, and version.
+   - Actions: View, Edit, Delete for each book.
+   - Pagination for book listing.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. **Add/Edit Book**:
+   - Add new books with details such as title, author, category, price, PDF, cover photo, version, edition, ISBN, release date, and brief.
+   - Edit existing book details with auto-populated fields.
 
-## Build
+5. **View Book**:
+   - View all details of a book including image, name, author, release date, price, ISBN, version, category, brief, number of pages, and average reading time.
+   - Options to edit or delete the book.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+6. **Delete Book**:
+   - Delete a book with a confirmation pop-up.
 
-## Running unit tests
+7. **File Upload**:
+   - Integration with Firebase to upload images and PDFs for books.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+8. **Route Protection**:
+   - Guards to protect routes from unauthorized access.
 
-## Running end-to-end tests
+9. **Data Filtering and Transformation**:
+   - Use of pipes to filter and transform data.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+10. **Custom Validation**:
+    - Angular reactive forms validation for custom validation logic.
+   
+      
+## Technologies Used
 
-## Further help
+- **Bootstrap**: For responsive design.
+- **FontAwesome**: For icons.
+- **Firebase**: For file uploads.
+- **json-server**: For local API.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Getting Started
+  **Prerequisites**  
+  * angular CLI.
+    
+**Installation**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/David8-0/TrianglZ-Task-Angular.git
+   cd TrianglZ-Task-Angular
+2. Install the dependencies:
+    ```bash
+     npm install
+     npm install -g json-server
+
+**Running the Application**
+1. Start the development server:
+    ```bash
+     ng serve -open
+     json-server data/data_base.json
+2. Open your browser and navigate to http://localhost:4200.
+
+## Usage
+
+1. **Login**:
+   - Access the login page and enter valid credentials to access the admin portal.
+
+2. **Manage Books**:
+   - Use the navigation to access the list of books.
+   - Add new books using the "Add book" button.
+   - Edit or view details of existing books using the corresponding actions.
+   - Delete books with confirmation.
+
+3. **Search and Pagination**:
+   - Use the search bar to find books by name or author.
+   - Navigate through paginated lists of books.
+
+4. **Upload Files**:
+   - Upload book cover images and PDFs through the add/edit book forms.
+
+## Contributing
+
+We welcome contributions to improve the Student Manager Application. To contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes and commit them.
+4. Push to your fork and submit a pull request.
+
+
+## Contact
+
+For any inquiries, please contact:
+
+- **Name**: David Ayad
+- **Email**: [davidayad88@gmail.com](mailto:davidayad88@gmail.com)
+- **GitHub**: [David Ayad](https://github.com/David8-0)
