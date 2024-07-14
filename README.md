@@ -63,10 +63,19 @@ This project is an admin portal and user-friendly platform designed to manage bo
      npm install
      npm install -g json-server
 
+### Note on Handling Upstream Dependency Conflicts
+
+If you encounter an upstream dependency conflict while installing npm packages, you can resolve this issue by using the `--legacy-peer-deps` flag with the npm install command. This flag allows the installation to proceed despite the peer dependency conflicts.
+
+To use this flag, execute the following command in your terminal:
+
+ 
+      npm install --legacy-peer-deps
+
 **Running the Application**
 1. Start the development server:
     ```bash
-     ng serve -open
+     ng s -o
      json-server data/data_base.json
 2. Open your browser and navigate to http://localhost:4200.
 
