@@ -53,9 +53,8 @@ export class AddEditComponent implements OnChanges{
         this.addEditBookForm.get('pages')?.setValue(this.editBook.pages);
         this.addEditBookForm.get('toRead')?.setValue(this.editBook.toRead);
         this.addEditBookForm.get('image')?.setValue(this.editBook.image);
+        this.addEditBookForm.get('pdf')?.setValue(this.editBook.pdf);
         this.imageURL = this.editBook.image??"";
-        console.log(this.addEditBookForm);
-        
       }
   }
 

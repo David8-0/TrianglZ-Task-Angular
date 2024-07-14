@@ -12,6 +12,6 @@ export interface Book {
       brief: string;
       pages: number;
       toRead: number;
-      olderVersion?: number;
+      olderVersion?: string;
       pdf:string;
 }
