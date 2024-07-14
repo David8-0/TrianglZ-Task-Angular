@@ -60,7 +60,7 @@ export class BookDetailsComponent implements OnInit,OnDestroy{
       next:(response)=>{
         this._router.navigateByUrl('/books/list');
       },
-      error:(error)=>{console.log(error);
+      error:(error)=>{
       },
       complete:()=>{this.hideDeleteMessage()}
     });

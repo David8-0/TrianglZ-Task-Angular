@@ -40,9 +40,9 @@
                    
                         
                         <div id="control-buttons">
-                            <div id="control-buttons" class="text-end">
-                                <button id="red-btn" class="btn" (click)="showDeleteMessage(book.id)" >Delete</button>
-                                <button id="blue-btn" [routerLink]="['/books/edit',book.id]" class="btn" >Edit</button>
+                            <div  class="control-buttons text-end">
+                                <button  class="red-btn btn" (click)="showDeleteMessage(book.id)" >Delete</button>
+                                <button  [routerLink]="['/books/edit',book.id]" class="blue-btn btn" >Edit</button>
                             </div>
                         </div>
                     
@@ -73,11 +73,11 @@
     </div>
 </div>
 
-<div *ngIf="showDeleteWarnings" id="delete-warning" class="rounded-3  bg-white p-4">
+<div *ngIf="showDeleteWarnings"  class="delete-warning rounded-3  bg-white p-4">
     <h3>Delete Book</h3>
     <p>Are you sure you want to delete this Book?</p>
-    <div id="control-buttons" class="text-end">
-        <button id="grey-btn" type="button" class="btn" (click)="hideDeleteMessage()">Cancel</button>
-        <button id="red-btn" class="btn" (click)="deleteBook()">Delete</button>
+    <div  class="control-buttons text-end">
+        <button  type="button" class="grey-btn btn" (click)="hideDeleteMessage()">Cancel</button>
+        <button  class="red-btn btn" (click)="deleteBook()">Delete</button>
     </div>
 </div>

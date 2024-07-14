@@ -1,8 +1,9 @@
+@import 'scss_variables/variables';
 #books-edit{
     margin-block: 20px;
     h1{
         font-size: 30px;
         font-weight: 700;
-        color: #5F6360;
+        color: $header-color;
     }
 }

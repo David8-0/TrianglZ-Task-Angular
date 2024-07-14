@@ -1,5 +1,6 @@
+@import 'scss_variables/variables';
 aside{
-    background-color: white;
+    background-color: $white;
     transition: all 0.3s ;
     height: 100%;
     width: 65px;
@@ -12,8 +13,8 @@ aside{
     & .sidebar-item{
         padding: 15px;
         font-weight: 700;
-        border-right: 3px solid #B8669F;
-        background-color: #Eff1FD;
+        border-right: 3px solid $lavender-border-color;
+        background-color: $bg-body;
     }
 }
 

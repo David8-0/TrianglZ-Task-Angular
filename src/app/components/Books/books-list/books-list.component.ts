@@ -70,7 +70,7 @@ export class BooksListComponent implements OnInit{
         this.paginate();
         
       },
-      error:(error)=>{console.log(error);
+      error:(error)=>{
       },
       complete:()=>{this.hideDeleteMessage()}
     });

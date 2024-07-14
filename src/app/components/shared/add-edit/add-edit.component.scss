@@ -1,8 +1,9 @@
+@import 'scss_variables/variables';
 #books-add-edit{
-    color: #5F6360;
+    color: $header-color;
     
     input,select,textarea{
-        background-color: #EFF1FD;
+        background-color: $bg-body;
     }
     textarea{
         border: none;
@@ -16,13 +17,13 @@
             #image-placeholder{
                 width: 128px;
                 height: 200px;
-                box-shadow: 3px 3px 5px #B3B3B3;
+                box-shadow: 3px 3px 5px $shadow-color;
                 border-radius:10px ;
                 margin: auto;
                 position: relative;
                 i {
                     position: absolute;
-                    color:#B3B3B3 ;
+                    color:$shadow-color ;
                     bottom: -13px;
                     left: 20px;
                     font-size: 14px;
@@ -45,7 +46,7 @@
             
         }
         p{
-            color: #B4B4B4;
+            color: $shadow-color;
             font-size: 11px;
             font-weight: 700;
             text-align: center;
@@ -57,14 +58,14 @@
             margin: auto;
             padding:10px 20px;
             border-radius: 12px;
-            color:#E8B2DE;
-            border: 1px solid #E8B2DE;
+            color:$lavender-color;
+            border: 1px solid $lavender-color;
             font-size: 14px;
             font-weight: 700;
             transition: all 0.3s;
             &:hover{
-                background-color: #E8B2DE;
-                color: #fff;
+                background-color: $lavender-color;
+                color: $white;
             }
         }
     }
@@ -75,31 +76,12 @@
         }
     }
 
-    #control-buttons{
-        button{
-            margin-inline-end: 10px;
-            padding:10px 20px;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
-            &:hover{
-                color: #000;
-            }
-        }
-        #cancel-btn{
-            background-color:#F0F0F0 ;
-        }
-        #save-btn{
-            background-color: #104CC8;
-            color: #fff;
-        }
-    }
+    
 }
 
 
 .required{
-    color:#B866A0 ;
+    color:$bg-red ;
 }
 
 
@@ -112,6 +94,6 @@
     font-size: 1rem;
     pointer-events: none;
     transition: all 0.2s;
-    color: #6c757d; 
+    color: $info-color; 
   }
   

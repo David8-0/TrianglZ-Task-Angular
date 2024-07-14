@@ -31,10 +31,10 @@ export class BookEditComponent implements OnInit,OnDestroy{
           this._bookService.getByID(this.bookID).subscribe({
             next:(response)=>{
               this.editBook = response;
-              console.log(this.editBook);
+              
             },
             error:(error)=>{
-              console.log(error);
+              
             }
           });
 

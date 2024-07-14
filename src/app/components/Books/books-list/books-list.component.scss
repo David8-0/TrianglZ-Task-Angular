@@ -1,6 +1,7 @@
+@import 'scss_variables/variables';
 
 #books-list{
-    color: #5F6360;
+    color: $header-color;
     margin-block: 40px;
 
     h1{
@@ -28,27 +29,32 @@
         font-weight: 600;
         border-radius: 15px;
         transition: all 0.3s;
-        background-color:#0D4DC8;
-        color: #fff;
+        background-color:$bg-blue;
+        color: $white;
     }
     #table-container{
         overflow-x: auto;
         width: 100%;
-    }
-    table{
-        word-break: normal;
-        th,td{
-            color: #5F6360;
-            padding-block: 20px;
-            text-align: start;
-        }
-        td{
+        table{
             word-break: normal;
-        }
-        td:nth-child(4){
-            word-break: break-all;
+            th,td{
+                color: $header-color;
+                padding-block: 20px;
+                text-align: start;
+            }
+            td{
+                word-break: normal;
+            }
+            td:nth-child(4){
+                word-break: break-all;
+            }
+
+            .fa-eye{
+                color:$bg-blue;
+            }
         }
     }
+    
 
      
 
@@ -70,13 +76,13 @@
         }
         
         .active-page{
-            background-color: #0F4CCA;
-            color: #fff;
+            background-color: $bg-blue;
+            color: $white;
         }
     }
     
     #search-results{
-        border: 1px solid #86b7fe;
+        border: 1px solid $light-border-color;
         transition: all 0.3s;
         max-height: 400px;
         overflow-y:auto ;
@@ -86,14 +92,14 @@
         word-wrap: break-word;
         .search-item{
             a{
-                color: #5F6360;
+                color: $header-color;
             }
             padding: 5px 5px;
             &:hover{
-                background-color: #ECECEC;
+                background-color: $bg-light;
             }
             .search-line{
-                background-color: #5f63603a;
+                background-color: $shadow-color;
                 height: 1px;
             }
         }
@@ -101,22 +107,7 @@
     
 }
 
-#delete-warning{
-    width: 50%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 5px 5px 15px 10px #DFDFDF;
-    color: #5F6360;
-    h3{
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 25px;
-    }
 
-    
-}
 
 @media (max-width: 991.98px) { 
     #books-list{

@@ -1,4 +1,4 @@
-
+@import 'scss_variables/variables';
 
 
 #form-data{
@@ -13,13 +13,21 @@
     }
     .line{
         height: 1px;
-        background-color: #EFF1FD;
+        background-color: $bg-body;
     }
 
     input{
-        background-color: #EFF1FD;
+        background-color: $bg-body;
     }
     
+    #sign-in-button{
+        background-color: $bg-blue;
+        color:$white;
+    }
+
+    a{
+        color: $bg-blue;
+    }
 }
 
 
@@ -30,7 +38,7 @@
     background-image: url('../../../assets/images/login.jpg');
     background-position: cover;
     & #image-layer{
-        background-color: rgba(138, 43, 226, 0.3);
+        background-color: $lavender-layer;
         position: absolute;
         top: 0;
         left: 0;

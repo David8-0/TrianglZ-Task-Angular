@@ -6,7 +6,6 @@ import { CustomValidationService } from 'src/app/services/custom-validation.serv
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 
 
 @Component({
@@ -111,8 +110,6 @@ export class AddEditComponent implements OnChanges{
     }
     else{
       this.showErrors=true;
-      console.log(bookForm);
-      
     }
   }
 
@@ -148,9 +145,7 @@ export class AddEditComponent implements OnChanges{
           this.pdfUrl = downloadURL;
           this.addEditBookForm.get('pdf')?.setValue(this.pdfUrl);
         }
-        
         this.cdr.detectChanges(); 
-
       });
     });
   }

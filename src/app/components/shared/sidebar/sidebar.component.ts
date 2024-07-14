@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit{
-  @Input() isExpanded: boolean = false;
+  @Input() isExpanded: boolean = true;
    specificWidth:number = 767;
 
   ngOnInit(): void {
